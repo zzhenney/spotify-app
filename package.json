@@ -1,0 +1,25 @@
+{
+  "name": "spotify-app",
+  "version": "1.0.0",
+  "description": "Spotify Party Queue",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzhenney/spotify-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zzhenney/spotify-app/issues"
+  },
+  "homepage": "https://github.com/zzhenney/spotify-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4"
+  }
+}
