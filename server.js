@@ -1,21 +1,45 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+let express = require('express')
+let request = require('request')
+let querystring = require('querystring')
+const config = require('./config')
 
-const cors = require('cors')
+let app = express()
 
-const app = express(); 
+app.get('/login', function(req, res) {
+  const {client_id, redirect_uri} = config ; 
+  res.redirect('https://accounts.spotify.com/authorize?' +
+    querystring.stringify({
+      response_type: 'code',
+      client_id: client_id,
+      scope: 'user-read-private user-read-email',
+      redirect_uri
+    }))
+})
 
-//express middleware // 
-app.use(bodyParser.urlencoded({ extended: false })) 
-app.use(bodyParser.json())  
-app.use(cors())
+app.get('/callback', function(req, res) {
+  const {client_id, redirect_uri, client_secret} = config ; 
+  let code = req.query.code || null
+  let authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    form: {
+      code: code,
+      redirect_uri,
+      grant_type: 'authorization_code'
+    },
+    headers: {
+      'Authorization': 'Basic ' + (new Buffer(
+        client_id + ':' + client_secret
+      ).toString('base64'))
+    },
+    json: true
+  }
+  request.post(authOptions, function(error, response, body) {
+    var access_token = body.access_token
+    let uri = config.front_end_uri || 'http://localhost:3000'
+    res.redirect(uri + '?access_token=' + access_token)
+  })
+})
 
-
-//user routes// 
-app.get('/', (req,res) => {
-	res.send('spotify test app')
-}); 
-
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => {console.log(`Server running on port: ${port}`)})
+let port = process.env.PORT || 5000
+console.log(`Listening on port ${port}. Go /login to initiate authentication flow.`)
+app.listen(port)
