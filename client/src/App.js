@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import queryString from 'query-string'; 
+import {connect} from 'react-redux'; 
+import {authenticateUser} from './actions/authActions'; 
+
 
 class App extends Component {
+
+  componentDidMount(){
+    this.setState({token: queryString.parse(window.location.search).access_token}) 
+    this.props.authenticateUser(queryString.parse(window.location.search).access_token);
+
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <h1>Spotify App</h1>
       </div>
     );
   }
+
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return ({
+    token: state.token
+  })
+}
+
+export default connect(mapStateToProps, {authenticateUser})(App);
