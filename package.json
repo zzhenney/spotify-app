@@ -8,6 +8,7 @@
     "dev": "concurrently \" node server \" \" npm start --prefix client\""
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "concurrently": "^4.1.0",
     "express": "^4.15.4",
     "query-string": "^6.4.0",
