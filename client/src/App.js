@@ -26,7 +26,7 @@ class App extends Component {
   
           <div className="row">
             <div className="col-med-5">
-              <iframe style={{float: 'left'}} title="spotifyPlayer" src={`https://open.spotify.com/embed/track/${this.props.currSong}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <iframe style={{float: 'left'}} title="spotifyPlayer" src= {'https://open.spotify.com/embed/track/' + this.props.currSong} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             </div>
             <div className="col-med-9">
                 <SearchResults/>
