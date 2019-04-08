@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {selectSong} from '../actions/songActions'; 
+import {selectSong} from '../../actions/songActions'; 
 
 
 class SearchResults extends React.Component {
@@ -16,11 +16,9 @@ class SearchResults extends React.Component {
 				            </div>
 				            <div className="col">
 				                <div className="card-block px-2">
-				                    <h4 className="card-title">{song.name }</h4>
-				                    <p className="card-text">{song.artists[0].name} - {song.album.name}</p>
-
+				                    <h4 className="card-title">{song.name.substring(0,20) }</h4>
+				                    <p className="card-text">{song.artists[0].name} - {song.album.name.substring(0,20)}<a style={{float: 'right'}}href="#" className="btn btn-primary">+</a></p>
 				                </div>
-				                <a style={{float: 'right', marginTop: "50%"}}href="#" className="btn btn-primary">+</a>
 				            </div>
 				        </div>
 				  </div>

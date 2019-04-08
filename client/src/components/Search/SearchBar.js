@@ -1,6 +1,6 @@
 import React from 'react'; 
 import {connect} from 'react-redux'; 
-import {searchSongs} from '../actions/songActions'; 
+import {searchSongs} from '../../actions/songActions'; 
 
 class SearchBar extends React.Component {
 	state = {value: ''} 

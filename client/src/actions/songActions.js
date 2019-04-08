@@ -17,7 +17,6 @@ export const searchSongs = (q) => dispatch => {
 
 //!!test action **not in actual production!!// 
 export const selectSong = (songId) => {
-	console.log('songID' + songId)
 	return({
 		type: SELECT_SONG,
 		payload: songId 
