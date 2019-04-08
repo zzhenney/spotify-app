@@ -27,7 +27,6 @@ class App extends Component {
         
         <Route exact path="/search" component={SearchPage} />
         <Route exact path="/" render={(props) => <MainDisplay currSong={this.props.currSong}/>  } /> 
-          
         
       </div>
       </BrowserRouter>
