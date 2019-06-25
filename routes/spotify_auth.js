@@ -2,7 +2,7 @@ let express = require('express');
 let request = require('request');
 let router = express.Router();
 let querystring = require('querystring');
-const config = require('./config');
+const config = require('../spotifyConfig');
 
 router.get('/login', function(req, res) {
   const {client_id, redirect_uri} = config ; 
@@ -34,6 +34,7 @@ router.get('/callback', function(req, res) {
   }
   request.post(authOptions, function(error, response, body) {
     var access_token = body.access_token
+    const refresh_token = body.refresh_token
     let uri = config.front_end_uri || 'http://localhost:3000'
     res.redirect(uri + '?access_token=' + access_token)
   })

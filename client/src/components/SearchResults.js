@@ -6,7 +6,7 @@ import {selectSong} from '../actions/songActions';
 class SearchResults extends React.Component {
 
 	renderCards(songs){
-		
+
 		return (songs.map(song => {
 				return(
 				   <div className="card">
@@ -26,7 +26,7 @@ class SearchResults extends React.Component {
 			}
 		));
 	}
-	
+
 	render(){
 		const songs = this.props.songs
 		let retVal;
@@ -40,7 +40,7 @@ class SearchResults extends React.Component {
 			<div>
 				{retVal}
 			</div>
-			
+
 		);
 	}
 }
@@ -50,4 +50,3 @@ const mapStateToProps = (state) => {
 } 
 
 export default connect(mapStateToProps, {selectSong})(SearchResults)
-
