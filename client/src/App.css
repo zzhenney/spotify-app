@@ -1,1 +1,16 @@
+body {
+	height: 100vh;
+	background: #191919;
+}
 
+#root {
+	height: 100vh;
+}
+
+App {
+	height: 100vh;
+}
+
+.container {
+  height: 100vh;
+}

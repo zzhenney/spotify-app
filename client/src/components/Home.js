@@ -17,18 +17,24 @@ class Home extends React.Component {
 
   	render(){
       return (
-          <div>
-            <nav>
-              <ul>
-                <li>
-                 <Link to='/create-party'>Create Party</Link>
-                </li>
-                <li>
-                 <Link to='/join-party'>Join Party</Link>
-                </li>
-              </ul>
-            </nav>
+          <div class='container'>
+            <div class='row h-100 align-items-center'>
+              <div class='col'></div>
+              <div class='col text-center'>                  
+                <Link to='/create-party'>
+                  <button class='btn-lg btn-success'>Create Party</button>
+                </Link>
+                <br />
+                <br />
+                <Link to='/join-party'>
+                  <button class='btn-lg btn-success'>Join Party</button>
+                </Link>
+              </div>
+              <div class='col'></div>
+            </div>
+            
           </div>
+          
       );
     }
 }
