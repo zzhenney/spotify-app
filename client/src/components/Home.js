@@ -3,8 +3,8 @@ import queryString from 'query-string';
 import {authenticateUser} from '../actions/authActions'; 
 import {connect} from 'react-redux'; 
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Login from '../components/Login';
-import Search from '../components/Search.js'
+import CreateParty from '../components/CreateParty';
+import JoinParty from '../components/JoinParty'
 
 class Home extends React.Component {
 
@@ -17,22 +17,18 @@ class Home extends React.Component {
 
   	render(){
       return (
-        <Router>
           <div>
             <nav>
               <ul>
                 <li>
-                 <Link to='/'>Create Party</Link>
+                 <Link to='/create-party'>Create Party</Link>
                 </li>
                 <li>
-                 <Link to='/'>Join Party</Link>
+                 <Link to='/join-party'>Join Party</Link>
                 </li>
               </ul>
             </nav>
           </div>
-          <Route path='/login' component={Login} />
-          <Route path='/search' component={Search} />
-        </Router>
       );
     }
 }

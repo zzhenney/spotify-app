@@ -37,8 +37,8 @@ export default class Login extends React.Component {
 		.then(res => {
 			if(res.status === 200){
 				console.log('LOGIN SUCCESSFUL')
-				//this.props.history.push('/search')
-				window.location.replace('http://localhost:5000/login')
+				this.props.history.push('/spotify-auth')
+				//window.location.replace('http://localhost:5000/login')
 			} else {
 				const error = new Error(res.error);
 				alert('Error logging in. Please try again');
@@ -57,39 +57,39 @@ export default class Login extends React.Component {
 	render() {
 		return (
 			<div class='container'>
-			<div class='row'>
-				<div class='col-sm'></div>
-				<div class='col-sm'>
-					<form onSubmit={this.onSubmit}>
-						<div class="form-group">
-							<input
-							  	class='form-control'
-							    type="text"
-							    id="login"			   
-							    name="username"
-							    placeholder="login"
-							    value={this.state.username}
-							    onChange={this.handleInputChange}
-							    required
-							/>
-						</div>
-						<div class="form-group">
-							<input
-							  	class='form-control'
-							    type="password"
-							    id="password"
-							    name="password"
-							    placeholder="password"
-							    value={this.state.password}
-							    onChange={this.handleInputChange}
-							    required
-							/>
-						</div>
-							<button type="submit" class='btn btn-success' value="Log In">Submit</button>
-					</form>
+				<div class='row'>
+					<div class='col-sm'></div>
+					<div class='col-sm'>
+						<form onSubmit={this.onSubmit}>
+							<div class="form-group">
+								<input
+								  	class='form-control'
+								    type="text"
+								    id="login"			   
+								    name="username"
+								    placeholder="login"
+								    value={this.state.username}
+								    onChange={this.handleInputChange}
+								    required
+								/>
+							</div>
+							<div class="form-group">
+								<input
+								  	class='form-control'
+								    type="password"
+								    id="password"
+								    name="password"
+								    placeholder="password"
+								    value={this.state.password}
+								    onChange={this.handleInputChange}
+								    required
+								/>
+							</div>
+								<button type="submit" class='btn btn-success' value="Log In">Submit</button>
+						</form>
+					</div>
+					<div class='col-sm'></div>
 				</div>
-				<div class='col-sm'></div>
-			</div>
 			</div>
 			
 		);
