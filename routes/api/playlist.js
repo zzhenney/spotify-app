@@ -7,7 +7,7 @@ let querystring = require('querystring');
 router.get('/create', function(request, response, next) {
 	//this may need to change. not sure how to handle tokens yet.
 	console.log(request.user)
-	/*
+	
 	const authToken = request.auth_token;
 	const userId = request.userId;
 	const playlistName = request.playlistName;
@@ -39,7 +39,7 @@ router.get('/create', function(request, response, next) {
 		res.send(body.id);
 
 	})
-	*/
+	
 
 
 })
