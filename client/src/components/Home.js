@@ -3,8 +3,8 @@ import queryString from 'query-string';
 import {authenticateUser} from '../actions/authActions'; 
 import {connect} from 'react-redux'; 
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Login from '../components/Login';
-import Search from '../components/Search.js'
+import CreateParty from '../components/CreateParty';
+import JoinParty from '../components/JoinParty'
 
 class Home extends React.Component {
 

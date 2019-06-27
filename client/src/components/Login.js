@@ -41,6 +41,7 @@ export default class Login extends React.Component {
 			//console.log(res.body.user)
 			if(res.status === 200){
 
+
 				//console.log(res.user)
 				this.props.history.push('/')
 				
@@ -80,39 +81,39 @@ export default class Login extends React.Component {
 	render() {
 		return (
 			<div class='container'>
-			<div class='row'>
-				<div class='col-sm'></div>
-				<div class='col-sm'>
-					<form onSubmit={this.onSubmit}>
-						<div class="form-group">
-							<input
-							  	class='form-control'
-							    type="text"
-							    id="login"			   
-							    name="username"
-							    placeholder="login"
-							    value={this.state.username}
-							    onChange={this.handleInputChange}
-							    required
-							/>
-						</div>
-						<div class="form-group">
-							<input
-							  	class='form-control'
-							    type="password"
-							    id="password"
-							    name="password"
-							    placeholder="password"
-							    value={this.state.password}
-							    onChange={this.handleInputChange}
-							    required
-							/>
-						</div>
-							<button type="submit" class='btn btn-success' value="Log In">Submit</button>
-					</form>
+				<div class='row'>
+					<div class='col-sm'></div>
+					<div class='col-sm'>
+						<form onSubmit={this.onSubmit}>
+							<div class="form-group">
+								<input
+								  	class='form-control'
+								    type="text"
+								    id="login"			   
+								    name="username"
+								    placeholder="login"
+								    value={this.state.username}
+								    onChange={this.handleInputChange}
+								    required
+								/>
+							</div>
+							<div class="form-group">
+								<input
+								  	class='form-control'
+								    type="password"
+								    id="password"
+								    name="password"
+								    placeholder="password"
+								    value={this.state.password}
+								    onChange={this.handleInputChange}
+								    required
+								/>
+							</div>
+								<button type="submit" class='btn btn-success' value="Log In">Submit</button>
+						</form>
+					</div>
+					<div class='col-sm'></div>
 				</div>
-				<div class='col-sm'></div>
-			</div>
 			</div>
 			
 		);
