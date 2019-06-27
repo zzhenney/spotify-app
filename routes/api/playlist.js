@@ -2,10 +2,12 @@ let express = require('express');
 let request = require('request');
 let router = express.Router();
 let querystring = require('querystring');
-const config = require('../config');
+//const config = require('../config');
 
-router.get('/create-playlist', function(request, response, next) {
+router.get('/create', function(request, response, next) {
 	//this may need to change. not sure how to handle tokens yet.
+	console.log(request.user)
+	/*
 	const authToken = request.auth_token;
 	const userId = request.userId;
 	const playlistName = request.playlistName;
@@ -15,15 +17,15 @@ router.get('/create-playlist', function(request, response, next) {
 		url: `${url}`,
 		method: 'POST',
 		headers: {
-			'Authorization: Basic ' + authToken;
-			'Content-Type: application/json';
+			Authorization: `Basic ${authToken}`,
+			'Content-Type: application/json'
 		},
 		body: {
-			'name: ' + playlistName;
+			'name: ' + playlistName,
 			//collaborative playlists require private. 
 			//may be easier just to make it public in regards
 			//to adding attendees(users).
-			'public: true';
+			'public: true'
 		}
 	}
 
@@ -37,6 +39,9 @@ router.get('/create-playlist', function(request, response, next) {
 		res.send(body.id);
 
 	})
+	*/
 
 
 })
+
+module.exports = router

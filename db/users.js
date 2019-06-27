@@ -11,6 +11,21 @@ const findUser  = (username) => {
 
 }
 
+const saveSpotifyData = (userId, access_token, refresh_token, spotify_userid) => {
+	db.none(`UPDATE users 
+		SET access_token = '${access_token}', refresh_token = '${refresh_token}', spotify_userid = '${spotify_userid}'
+		WHERE users.id = ${userId}`)
+	.catch(err => {
+		console.log(`DB saveToken error: ${err}`)
+	})
+}
+
+const getSpotifyData = (userId) => {
+	db.one(`SELECT access_token, refresh_token, spotify_userid
+		FROM users
+		WHERE users.id = ${userId}`)
+}
 
 
-module.exports = { findUser }
+
+module.exports = { findUser, saveSpotifyData, getSpotifyData }

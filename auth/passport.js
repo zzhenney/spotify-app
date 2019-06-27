@@ -22,6 +22,7 @@ passport.use('local-login',
           return done(null, false);
         }
         request.app.locals.loggedin = true; //move to tools/helpers
+        //console.log(user[0].id)
         return done(null, user[0]);
       })
       .catch(error => {
@@ -69,7 +70,7 @@ passport.use('local-signup',
 
 
 passport.serializeUser(function(user,done) {
-  //console.log("Serialize User id:", user.id);
+  console.log("Serialize User id:", user.id);
   done(null,user.id);
 });
 
@@ -81,8 +82,8 @@ passport.deserializeUser(function(id,done) {
         //console.log("DS User id:", userId[0].id);
         return done(null,false);
       }
-      //console.log("DeSerialize Success userId: ", userId[0].id);
-      return done(null, userId);
+      console.log("DeSerialize Success userId: ", userId[0].id);
+      return done(null, userId[0].id);
     })
     .catch(error => {
       return done(error);

@@ -17,22 +17,28 @@ class Home extends React.Component {
 
   	render(){
       return (
-        <Router>
-          <div>
-            <nav>
-              <ul>
-                <li>
-                 <Link to='/'>Create Party</Link>
-                </li>
-                <li>
-                 <Link to='/'>Join Party</Link>
-                </li>
-              </ul>
-            </nav>
+
+          <div class='container'>
+            <div class='row h-100 align-items-center'>
+              <div class='col'></div>
+              <div class='col text-center'>
+                <a class='btn btn-success' href="http://localhost:5000/login">Auth Spotify</a> 
+                <br />
+                <br />                 
+                <Link to='/create-party'>
+                  <button class='btn-lg btn-success'>Create Party</button>
+                </Link>
+                <br />
+                <br />
+                <Link to='/join-party'>
+                  <button class='btn-lg btn-success'>Join Party</button>
+                </Link>
+              </div>
+              <div class='col'></div>
+            </div>
+            
           </div>
-          <Route path='/login' component={Login} />
-          <Route path='/search' component={Search} />
-        </Router>
+
       );
     }
 }

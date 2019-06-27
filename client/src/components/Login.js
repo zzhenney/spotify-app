@@ -4,7 +4,9 @@ const server = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/a
 
 const headers = {
 	'Content-Type' : 'application/json',
-	Accept: 'application/json' 
+	Accept: 'application/json',
+
+
 	
 }
 
@@ -35,20 +37,41 @@ export default class Login extends React.Component {
 
 		})
 		.then(res => {
+			
+			//console.log(res.body.user)
 			if(res.status === 200){
-				console.log('LOGIN SUCCESSFUL')
-				//this.props.history.push('/search')
-				window.location.replace('http://localhost:5000/login')
+
+				//console.log(res.user)
+				this.props.history.push('/')
+				
+				//console.log(`from front: ${this.state.username}`)
+				//window.location.replace(`http://localhost:5000/login`)
+				
+
+				/*cant work via CORS / origin = null on a redirect
+				fetch('http://localhost:5000/login', {
+					method: 'GET',
+					headers: headers
+					
+				})
+				.then(res => {
+					console.log(res.access_token)
+				})
+				.catch(err => {
+					console.log('fetch error: ' + err)
+				})
+				*/
+
 			} else {
-				const error = new Error(res.error);
+				//const error = new Error(res.error);
 				alert('Error logging in. Please try again');
-				throw error;
+				//throw error;
 
 			} 
 		})
 		.catch(err => {
 			console.error(err);
-			alert('Server Error. Please try again');
+			alert('Server Error. Please try again: ');
 		});
 	}
 
