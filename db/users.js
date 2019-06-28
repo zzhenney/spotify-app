@@ -21,9 +21,15 @@ const saveSpotifyData = (userId, access_token, refresh_token, spotify_userid) =>
 }
 
 const getSpotifyData = (userId) => {
-	db.one(`SELECT access_token, refresh_token, spotify_userid
+	return db.one(`SELECT access_token, refresh_token, spotify_userid
 		FROM users
 		WHERE users.id = ${userId}`)
+	.then(data => {
+		return data
+	})
+	.catch(err => {
+		console.log(`DB getSpotifyData error: ${err}`)
+	})
 }
 
 

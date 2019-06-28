@@ -20,7 +20,7 @@ router.get('/login', function(req, res) {
     querystring.stringify({
       response_type: 'code',
       client_id: client_id,
-      scope: 'streaming user-read-birthdate user-read-email user-read-private',
+      scope: 'streaming user-read-birthdate user-read-email user-read-private playlist-modify-public',
       redirect_uri
     }))
 })
@@ -89,5 +89,9 @@ router.get('/callback', function(req, res) {
   })
 
 })
+
+
+
+
 
 module.exports = router;
