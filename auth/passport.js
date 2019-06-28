@@ -70,7 +70,7 @@ passport.use('local-signup',
 
 
 passport.serializeUser(function(user,done) {
-  console.log("Serialize User id:", user.id);
+  console.log("\n\nSerialize User id:", user.id);
   done(null,user.id);
 });
 
@@ -82,8 +82,8 @@ passport.deserializeUser(function(id,done) {
         //console.log("DS User id:", userId[0].id);
         return done(null,false);
       }
-      console.log("DeSerialize Success userId: ", userId[0].id);
-      return done(null, userId[0].id);
+      console.log("\n\nDeSerialize Success userId: ", userId[0].id);
+      return done(null, userId[0]);
     })
     .catch(error => {
       return done(error);

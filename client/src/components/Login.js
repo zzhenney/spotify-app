@@ -31,6 +31,7 @@ export default class Login extends React.Component {
 		event.preventDefault()
 		//console.log(JSON.stringify(this.state))
 		fetch(server, {
+			credentials: 'include',
 			method: 'POST',
 			headers: headers,
 			body: JSON.stringify(this.state)
@@ -42,7 +43,6 @@ export default class Login extends React.Component {
 			if(res.status === 200){
 
 
-				//console.log(res.user)
 				this.props.history.push('/')
 				
 				//console.log(`from front: ${this.state.username}`)
@@ -72,7 +72,7 @@ export default class Login extends React.Component {
 		})
 		.catch(err => {
 			console.error(err);
-			alert('Server Error. Please try again: ');
+			alert('Server Error. Please try again: ' + err);
 		});
 	}
 

@@ -35,3 +35,7 @@ const getSpotifyData = (userId) => {
 
 
 module.exports = { findUser, saveSpotifyData, getSpotifyData }
+
+
+
+

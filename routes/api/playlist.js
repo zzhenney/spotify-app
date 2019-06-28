@@ -5,23 +5,29 @@ let querystring = require('querystring');
 const User = require('../../db/users.js')
 //const config = require('../config');
 
-router.get('/create/:name', function(request, response, next) {
+router.post('/create', function(request, response, next) {
 	//this may need to change. not sure how to handle tokens yet.
-	const playlistName = request.params.name
-	console.log(request.user)
-	const userId = request.user
+	if(request.isAuthenticated()){
+		console.log('AUTHED UP')
+	}
+	console.log(request)
+	console.log(`user: ${request.user.id}`)
+	//console.log(`\n\n\n\n\n\n\n\n`)
+	//console.log(request)
+	console.log(request.body.partyName)
+	const playlistName = request.body.partyName
+	const userId = request.user.id
+
 	let access_token = null
 	let refresh_token = null
 	let spotify_userid = null
 	
 	User.getSpotifyData(userId)
 	.then(data => {
-		const user = data
-		console.log(user)
-		//console.log(user.access_token)
-		access_token = user.access_token
-		refresh_token = user.refresh_token
-		spotify_userid = user.spotify_userid
+		console.log(data.access_token)
+		access_token = data.access_token
+		refresh_token = data.refresh_token
+		spotify_userid = data.spotify_userid
 		next()
 	})
 	.then(() =>{
@@ -46,59 +52,26 @@ router.get('/create/:name', function(request, response, next) {
 			json: true
 		}
 
-		//const options = JSON.stringify(requestOptions);
-
-		//const body = JSON.stringify(bodyOptions);
-
 		http_request.post(requestOptions, function(err, res, body) {
 			if(err) throw err;
 			//else return the playlist id to host user
-			response.send(body);
+			//req.status does not exist?
+			//if(req.status == 200)
+			if(res.statusCode === 201 || 200){
+
+				response.sendStatus(200);
+			}
+			else{
+				console.log(body)
+				console.log(err)
+			}
 
 		})
+		
 	})
 	.catch(err => {
 		console.log(err)
 	})
-
-	
-	
-	/*
-	const authToken = request.auth_token;
-	const userId = request.userId;
-	const playlistName = request.playlistName;
-	let url = `https://api.spotify.com/v1/users/${userId}/playlists`;
-
-	const requestOptions = {
-		url: `${url}`,
-		method: 'POST',
-		headers: {
-			Authorization: `Basic ${authToken}`,
-			'Content-Type: application/json'
-		},
-		body: {
-			'name: ' + playlistName,
-			//collaborative playlists require private. 
-			//may be easier just to make it public in regards
-			//to adding attendees(users).
-			'public: true'
-		}
-	}
-
-	const options = JSON.stringify(requestOptions);
-
-	const body = JSON.stringify(bodyOptions);
-
-	request(options, function(err, res, body) {
-		if(err) throw err;
-		//else return the playlist id to host user
-		res.send(body.id);
-
-	})
-	*/
-	
-
-
 })
 
 module.exports = router

@@ -65,7 +65,7 @@ router.get('/callback', function(req, res) {
         //console.log(body)
         let bodyObject = JSON.parse(body)
         
-        User.saveSpotifyData(req.user, access_token, refresh_token, bodyObject.id)
+        User.saveSpotifyData(req.user.id, access_token, refresh_token, bodyObject.id)
 
         let uri = config.front_end_uri || 'http://localhost:3000'
         res.redirect(uri + '?access_token=' + access_token)
